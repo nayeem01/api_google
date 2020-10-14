@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Google map</title>
+    <style>
+      #map{
+        height: 400px;
+        width: 100%;
+
+      }
+
+    </style>
+   <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+  </head>
+  <body>
+    <h3>Google map</h3>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+
+          var loc = {lat: 23.7881, lng: 90.3737};
+
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 13, center: loc});
+          //var marker = new google.maps.Marker({position: loc, map: map});
+          var marker = new google.maps.Marker({
+            position: loc, 
+            map: map,
+            icon: "https://raw.githubusercontent.com/googlemaps/js-markerclustererplus/main/images/heart30.png"
+            }
+          );
+          var infoWindow = new google.maps.infoWindow({
+            content: '<h1>shewrapar</h1>'
+          });
+          marker.addListener('click',function(){
+            infoWindow.open(map,marker);
+        });
+        }
+    </script>
+    
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkMXyrq9una_V5jMAmq_xG4QE06-OPKW0&callback=initMap">
+    </script>
+      <!--AIzaSyAkMXyrq9una_V5jMAmq_xG4QE06-OPKW0 
+        <i class="fas fa-home"></i>
+      -->
+  </body>
+</html>
